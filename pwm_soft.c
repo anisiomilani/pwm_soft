@@ -48,6 +48,7 @@
 
 // --- Definições ---
 #define LED_GPIO_PIN        31U     // GPIO do LED2 (Azul) na LaunchPadXL
+#define LED_GPIO_PIN_2      34U   // led (vermelho)
 
 #define PWM_COMPARE_MASK    0x03FFU // Máscara para bits 0-9 (valor de comparação)
 #define PWM_ENABLE_BIT      (1U << 10) // Bit 10: habilita PWM
@@ -60,6 +61,9 @@ unsigned int g_pwmControlReg = 0x0000U; // Registrador de controle PWM simulado
 float g_dutyCyclePercent = 50.0F;       // Ciclo de trabalho desejado (0.0 a 100.0)
 unsigned int g_timeOn_us;               // Tempo LIGADO (LED ON)
 unsigned int g_timeOff_us;              // Tempo DESLIGADO (LED OFF)
+int g_PWMDuty; //criado em sala
+
+
 
 // Protótipos de Funções
 void initSystemPeripherals(void);
@@ -85,7 +89,15 @@ void main(void)
     {
         setPWMDutyCycleAndRegister(g_dutyCyclePercent);
         generateSoftwarePWM();
+
+        if (g_PWMDuty ==1){
+                   enablePWM();
+                }
+                 else{
+                     disablePWM();
+                 }
     }
+
 }
 
 // Implementações de Funções
@@ -106,6 +118,10 @@ void initLEDGPIO(void)
     GPIO_setPadConfig(LED_GPIO_PIN, GPIO_PIN_TYPE_STD);
     GPIO_setDirectionMode(LED_GPIO_PIN, GPIO_DIR_MODE_OUT);
     GPIO_writePin(LED_GPIO_PIN, 1); // LED inicia desligado (ativo baixo)
+
+    GPIO_setPadConfig(LED_GPIO_PIN_2, GPIO_PIN_TYPE_STD);
+    GPIO_setDirectionMode(LED_GPIO_PIN_2, GPIO_DIR_MODE_OUT);
+    GPIO_writePin(LED_GPIO_PIN_2, 1); // LED inicia desligado (ativo baixo)
 }
 
 void enablePWM(void)
@@ -153,23 +169,28 @@ void generateSoftwarePWM(void)
     {
         if ((g_pwmControlReg & PWM_INVERT_BIT) != 0U) // Lógica INVERTIDA
         {
+            GPIO_writePin(LED_GPIO_PIN_2, 1);
             GPIO_writePin(LED_GPIO_PIN, 0); // Pino HIGH (LED OFF)
             DEVICE_DELAY_US(g_timeOn_us);
 
+            GPIO_writePin(LED_GPIO_PIN_2, 0);
             GPIO_writePin(LED_GPIO_PIN, 1); // Pino LOW (LED ON)
             DEVICE_DELAY_US(g_timeOff_us);
         }
         else // Lógica NORMAL
         {
+            GPIO_writePin(LED_GPIO_PIN_2, 1);
             GPIO_writePin(LED_GPIO_PIN, 0); // Pino LOW (LED ON)
             DEVICE_DELAY_US(g_timeOn_us);
 
+            GPIO_writePin(LED_GPIO_PIN_2, 0);
             GPIO_writePin(LED_GPIO_PIN, 1); // Pino HIGH (LED OFF)
             DEVICE_DELAY_US(g_timeOff_us);
         }
     }
     else // PWM desabilitado
     {
+        GPIO_writePin(LED_GPIO_PIN_2, 1);
         GPIO_writePin(LED_GPIO_PIN, 1); // LED OFF
         DEVICE_DELAY_US(PWM_PERIOD_US); // Aguarda período completo
     }
