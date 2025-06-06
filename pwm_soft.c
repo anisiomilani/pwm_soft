@@ -60,6 +60,9 @@ unsigned int g_pwmControlReg = 0x0000U; // Registrador de controle PWM simulado
 float g_dutyCyclePercent = 50.0F;       // Ciclo de trabalho desejado (0.0 a 100.0)
 unsigned int g_timeOn_us;               // Tempo LIGADO (LED ON)
 unsigned int g_timeOff_us;              // Tempo DESLIGADO (LED OFF)
+int g_PWMDuty; //criado em sala
+
+
 
 // Protótipos de Funções
 void initSystemPeripherals(void);
@@ -85,7 +88,15 @@ void main(void)
     {
         setPWMDutyCycleAndRegister(g_dutyCyclePercent);
         generateSoftwarePWM();
+
+        if (g_PWMDuty ==1){
+                   enablePWM();
+                }
+                 else{
+                     disablePWM();
+                 }
     }
+
 }
 
 // Implementações de Funções

@@ -1,6 +1,6 @@
 "./syscfg/board.obj"
 "./syscfg/c2000ware_libraries.obj"
-"./pwm_sim.obj"
+"./pwm_soft.obj"
 "./device/F2837xD_CodeStartBranch.obj"
 "./device/device.obj"
 "../2837xD_RAM_lnk_cpu1.cmd"

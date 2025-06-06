@@ -5,37 +5,37 @@
 SHELL = cmd.exe
 
 # Each subdirectory must supply rules for building sources it contributes
-build-953377231: ../c2000.syscfg
+build-1123433535: ../c2000.syscfg
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: SysConfig'
-	"C:/ti/ccs1281/ccs/utils/sysconfig_1.21.0/sysconfig_cli.bat" --script "C:/Users/guilh/Documents/WSC2000/pwm_sim/c2000.syscfg" -o "syscfg" -s "C:/ti/c2000/C2000Ware_5_04_00_00/.metadata/sdk.json" -d "F2837xD" --compiler ccs
+	"C:/ti/ccs1281/ccs/utils/sysconfig_1.21.0/sysconfig_cli.bat" --script "C:/ti/tarefa aula/pwm_soft/c2000.syscfg" -o "syscfg" -s "C:/ti/c2000/C2000Ware_5_04_00_00/.metadata/sdk.json" -d "F2837xD" --compiler ccs
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
-syscfg/board.c: build-953377231 ../c2000.syscfg
-syscfg/board.h: build-953377231
-syscfg/board.cmd.genlibs: build-953377231
-syscfg/board.opt: build-953377231
-syscfg/board.json: build-953377231
-syscfg/pinmux.csv: build-953377231
-syscfg/c2000ware_libraries.cmd.genlibs: build-953377231
-syscfg/c2000ware_libraries.opt: build-953377231
-syscfg/c2000ware_libraries.c: build-953377231
-syscfg/c2000ware_libraries.h: build-953377231
-syscfg/clocktree.h: build-953377231
-syscfg: build-953377231
+syscfg/board.c: build-1123433535 ../c2000.syscfg
+syscfg/board.h: build-1123433535
+syscfg/board.cmd.genlibs: build-1123433535
+syscfg/board.opt: build-1123433535
+syscfg/board.json: build-1123433535
+syscfg/pinmux.csv: build-1123433535
+syscfg/c2000ware_libraries.cmd.genlibs: build-1123433535
+syscfg/c2000ware_libraries.opt: build-1123433535
+syscfg/c2000ware_libraries.c: build-1123433535
+syscfg/c2000ware_libraries.h: build-1123433535
+syscfg/clocktree.h: build-1123433535
+syscfg: build-1123433535
 
 syscfg/%.obj: ./syscfg/%.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: C2000 Compiler'
-	"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --include_path="C:/Users/guilh/Documents/WSC2000/pwm_sim" --include_path="C:/Users/guilh/Documents/WSC2000/pwm_sim/device" --include_path="C:/ti/c2000/C2000Ware_5_04_00_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include" --define=DEBUG --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="syscfg/$(basename $(<F)).d_raw" --include_path="C:/Users/guilh/Documents/WSC2000/pwm_sim/CPU1_RAM/syscfg" --obj_directory="syscfg" $(GEN_OPTS__FLAG) "$<"
+	"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --include_path="C:/ti/tarefa aula/pwm_soft" --include_path="C:/ti/tarefa aula/pwm_soft/device" --include_path="C:/ti/c2000/C2000Ware_5_04_00_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include" --define=DEBUG --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="syscfg/$(basename $(<F)).d_raw" --include_path="C:/ti/tarefa aula/pwm_soft/CPU1_RAM/syscfg" --obj_directory="syscfg" $(GEN_OPTS__FLAG) "$<"
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
 %.obj: ../%.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: C2000 Compiler'
-	"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --include_path="C:/Users/guilh/Documents/WSC2000/pwm_sim" --include_path="C:/Users/guilh/Documents/WSC2000/pwm_sim/device" --include_path="C:/ti/c2000/C2000Ware_5_04_00_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include" --define=DEBUG --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" --include_path="C:/Users/guilh/Documents/WSC2000/pwm_sim/CPU1_RAM/syscfg" $(GEN_OPTS__FLAG) "$<"
+	"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --include_path="C:/ti/tarefa aula/pwm_soft" --include_path="C:/ti/tarefa aula/pwm_soft/device" --include_path="C:/ti/c2000/C2000Ware_5_04_00_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include" --define=DEBUG --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" --include_path="C:/ti/tarefa aula/pwm_soft/CPU1_RAM/syscfg" $(GEN_OPTS__FLAG) "$<"
 	@echo 'Finished building: "$<"'
 	@echo ' '
 

@@ -17,7 +17,7 @@ C:/ti/c2000/C2000Ware_5_04_00_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib
 C_SRCS += \
 ./syscfg/board.c \
 ./syscfg/c2000ware_libraries.c \
-../pwm_sim.c 
+../pwm_soft.c 
 
 GEN_FILES += \
 ./syscfg/board.c \
@@ -31,7 +31,7 @@ GEN_MISC_DIRS += \
 C_DEPS += \
 ./syscfg/board.d \
 ./syscfg/c2000ware_libraries.d \
-./pwm_sim.d 
+./pwm_soft.d 
 
 GEN_OPTS += \
 ./syscfg/board.opt \
@@ -40,7 +40,7 @@ GEN_OPTS += \
 OBJS += \
 ./syscfg/board.obj \
 ./syscfg/c2000ware_libraries.obj \
-./pwm_sim.obj 
+./pwm_soft.obj 
 
 GEN_MISC_FILES += \
 ./syscfg/board.h \
@@ -57,7 +57,7 @@ GEN_MISC_DIRS__QUOTED += \
 OBJS__QUOTED += \
 "syscfg\board.obj" \
 "syscfg\c2000ware_libraries.obj" \
-"pwm_sim.obj" 
+"pwm_soft.obj" 
 
 GEN_MISC_FILES__QUOTED += \
 "syscfg\board.h" \
@@ -71,7 +71,7 @@ GEN_MISC_FILES__QUOTED += \
 C_DEPS__QUOTED += \
 "syscfg\board.d" \
 "syscfg\c2000ware_libraries.d" \
-"pwm_sim.d" 
+"pwm_soft.d" 
 
 GEN_FILES__QUOTED += \
 "syscfg\board.c" \
@@ -85,6 +85,6 @@ SYSCFG_SRCS__QUOTED += \
 C_SRCS__QUOTED += \
 "./syscfg/board.c" \
 "./syscfg/c2000ware_libraries.c" \
-"../pwm_sim.c" 
+"../pwm_soft.c" 
 
 

@@ -12,7 +12,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./syscfg/board.obj" \
 "./syscfg/c2000ware_libraries.obj" \
-"./pwm_sim.obj" \
+"./pwm_soft.obj" \
 "./device/F2837xD_CodeStartBranch.obj" \
 "./device/device.obj" \
 "../2837xD_RAM_lnk_cpu1.cmd" \
@@ -127,29 +127,29 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-pwm_sim.out 
+pwm_soft.out 
 
 EXE_OUTPUTS__QUOTED += \
-"pwm_sim.out" 
+"pwm_soft.out" 
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "pwm_sim.out"
+	@$(MAKE) --no-print-directory -Onone "pwm_soft.out"
 
 # Tool invocations
-pwm_sim.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
+pwm_soft.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --define=DEBUG --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"pwm_sim.map" --stack_size=0x100 --warn_sections -i"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/lib" -i"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="pwm_sim_linkInfo.xml" --entry_point=code_start --rom_model -o "pwm_sim.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --define=DEBUG --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"pwm_soft.map" --stack_size=0x100 --warn_sections -i"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/lib" -i"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="pwm_soft_linkInfo.xml" --entry_point=code_start --rom_model -o "pwm_soft.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "syscfg\board.obj" "syscfg\c2000ware_libraries.obj" "pwm_sim.obj" "device\F2837xD_CodeStartBranch.obj" "device\device.obj" 
-	-$(RM) "syscfg\board.d" "syscfg\c2000ware_libraries.d" "pwm_sim.d" "device\device.d" 
+	-$(RM) "syscfg\board.obj" "syscfg\c2000ware_libraries.obj" "pwm_soft.obj" "device\F2837xD_CodeStartBranch.obj" "device\device.obj" 
+	-$(RM) "syscfg\board.d" "syscfg\c2000ware_libraries.d" "pwm_soft.d" "device\device.d" 
 	-$(RM) "device\F2837xD_CodeStartBranch.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'
