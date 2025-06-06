@@ -48,7 +48,7 @@
 
 // --- Definições ---
 #define LED_GPIO_PIN        31U     // GPIO do LED2 (Azul) na LaunchPadXL
-#define LED_GPIO_PIN_2      34U   // led (vermelho)
+#define LED_GPIO_PIN_2      34U   // led (vermelho) ""
 
 #define PWM_COMPARE_MASK    0x03FFU // Máscara para bits 0-9 (valor de comparação)
 #define PWM_ENABLE_BIT      (1U << 10) // Bit 10: habilita PWM
